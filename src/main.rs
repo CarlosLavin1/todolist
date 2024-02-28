@@ -1,8 +1,5 @@
 mod task;
-use std::{
-    default,
-    io::{self, Write},
-};
+use std::io::{self, Write};
 use task::Task;
 
 fn menu() {
@@ -11,6 +8,12 @@ fn menu() {
 
 fn main() {
     let mut todo_list: Vec<Task> = Vec::new();
+
+    let _ = &todo_list.push(Task::new(
+        1,
+        "Garbage".to_string(),
+        "Take out the garbage".to_string(),
+    ));
 
     loop {
         menu();
@@ -32,6 +35,13 @@ fn main() {
         match choice {
             1 => {
                 // print tasks in list
+                println!("Tasks:");
+                for task in &todo_list {
+                    println!(
+                        "[{}] {} - {} (Completed: {})",
+                        task.id, task.title, task.description, task.completed
+                    );
+                }
             }
             2 => {
                 // add a task

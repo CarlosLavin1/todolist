@@ -1,7 +1,18 @@
 #[derive(Debug)]
 pub struct Task {
-    id: u32,
-    title: String,
-    description: String,
-    completed: bool,
+    pub id: usize,
+    pub title: String,
+    pub description: String,
+    pub completed: bool,
+}
+
+impl Task {
+    pub fn new(id: usize, title: String, description: String) -> Self {
+        Task {
+            id,
+            title,
+            description,
+            completed: false,
+        }
+    }
 }
